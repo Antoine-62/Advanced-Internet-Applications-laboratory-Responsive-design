@@ -1,0 +1,58 @@
+/*limit sizes of the devices*/ 
+$mobile-width-limit: 600px;
+$desktop-width-limit: 1024px;
+
+$default-font: 16p;
+
+$tablet-width: 100%;
+$desktop-width: 100%;
+
+html {height:100%;}
+body {height:100%;}
+#container { 
+        
+    margin: 0px;
+ }
+
+/*Mobile*/
+@media only screen and (max-width: $mobile-width-limit) {
+    #container { width: $tablet-width; }
+}
+
+/*Tablet*/
+@media only screen and (min-width: $mobile-width-limit + 1) and (max-width: $desktop-width-limit - 1) {
+    #container { width: $desktop-width; }
+}
+
+/*Destock*/
+@media only screen and (min-width: $desktop-width-limit) {
+    #container { 
+        
+        width: $desktop-width;
+     }
+
+    #first
+    {
+        float:left;
+        background-color:#ff0000;
+        width:27%;
+        margin: 3%;
+       
+
+    }
+    #second
+    {
+        float:left;
+        background-color:#00ff00;
+        width:27%;
+        margin: 3%;
+        
+    }
+    #third
+    {
+        float:left;
+        background-color:#0000ff;
+        width:27%;
+        margin: 3%;
+    }
+}

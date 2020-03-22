@@ -2,40 +2,104 @@
 $mobile-width-limit: 600px;
 $desktop-width-limit: 1024px;
 
-$default-font: 16p;
+$default-font: 16px;
 
 $tablet-width: 100%;
 $desktop-width: 100%;
 
 html {height:100%;}
-body {height:100%;}
-#container { 
-        
+body {
+    height:100%;
     margin: 0px;
+    font-size: $default-font;
+}
+#container { 
+    position: relative;
+    margin: 0;
+    min-height: 100%;
  }
+ #content { 
+    padding-bottom: 10rem;    /* Footer height */
+ }
+
+ #titre {
+     font-size: 200%;
+ }
+
+ #titreS {
+    font-size: 150%;
+    margin-top: 0%;
+    text-align: center;
+    position: relative;
+    left: 50.5%;
+    padding: 2%;
+    width:45.5%;
+}
+
+#first
+{
+    #titreS {
+        background-color: DodgerBlue;
+        
+    }
+    background-color: #efefef;
+
+}
+#second
+{
+    #titreS {
+        background-color: orange;
+    }
+    background-color: #efefef;
+
+    
+}
+#third
+{
+    #titreS {
+        background-color: Violet;
+    }
+    background-color: #efefef;
+   /* padding: -2px;
+    border-style: solid;
+    border-width: 0.5px;*/
+}
 
 /*Mobile*/
 @media only screen and (max-width: $mobile-width-limit) {
-    #container { width: $tablet-width; }
+    #sections { 
+        
+        margin: 0%;
+     }
+    #first
+    {  
+        width:94%;
+        margin: 3%;
+       
+
+    }
+    #second
+    {
+        width:94%;
+        margin: 0% 3%;
+        
+    }
+    #third
+    {
+        width:94%;
+        margin: 3%;
+    }
 }
 
 /*Tablet*/
 @media only screen and (min-width: $mobile-width-limit + 1) and (max-width: $desktop-width-limit - 1) {
-    #container { width: $desktop-width; }
-}
-
-/*Destock*/
-@media only screen and (min-width: $desktop-width-limit) {
-    #container { 
+    #sections { 
         
-        width: $desktop-width;
+        margin: 0%;
      }
-
     #first
     {
-        float:left;
-        background-color:#ff0000;
-        width:27%;
+        width:94%;
         margin: 3%;
        
 
@@ -43,16 +107,53 @@ body {height:100%;}
     #second
     {
         float:left;
-        background-color:#00ff00;
-        width:27%;
-        margin: 3%;
+        width:45.5%;
+        margin: 0% 3% 3% 3%;
         
     }
     #third
     {
         float:left;
-        background-color:#0000ff;
-        width:27%;
+        width:45.5%;
+        margin: 0% 3% 3% 0%;
+    }
+}
+
+/*Destock*/
+@media only screen and (min-width: $desktop-width-limit) {
+    #sections { 
+        
+        margin: 0%;
+     }
+
+    #first
+    {
+        float:left;
+        width:29.33%;
+        margin: 3%;
+       
+
+    }
+    #second
+    {
+        float:left;
+        width:29.33%;
+        margin: 3% 0% 3% 0%;
+        
+    }
+    #third
+    {
+        float:left;
+        width:29.33%;
         margin: 3%;
     }
 }
+
+footer {
+  
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #efefef;
+    text-align: center;
+  }

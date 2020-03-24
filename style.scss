@@ -26,6 +26,34 @@ body {
      font-size: 200%;
  }
 
+ nav {
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+      }
+      
+      li {
+        float: left;
+      }
+      
+      li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+      }
+      
+      /* Change the link color to #111 (black) on hover */
+      li a:hover {
+        background-color: rgb(42, 160, 95);
+      }
+      
+ }
+
  #titreS {
     font-size: 150%;
     margin-top: 0%;
@@ -64,15 +92,30 @@ body {
     border-style: solid;
     border-width: 0.5px;*/
 }
+footer {
+   
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #efefef;
+    text-align: center;
+    margin-top: 3%;
+  }
 
 /*Mobile*/
 @media only screen and (max-width: $mobile-width-limit) {
+    nav{
+        li{
+            float: none;
+        }
+    }
     #sections { 
         
         margin: 0%;
      }
     #first
     {  
+       
         width:94%;
         margin: 3%;
        
@@ -80,6 +123,7 @@ body {
     }
     #second
     {
+        
         width:94%;
         margin: 0% 3%;
         
@@ -106,17 +150,21 @@ body {
     }
     #second
     {
-        float:left;
+        position: absolute;
+        left: 0;
         width:45.5%;
         margin: 0% 3% 3% 3%;
         
     }
     #third
     {
-        float:left;
+        position: absolute;
+        left: 51.5%;
         width:45.5%;
         margin: 0% 3% 3% 0%;
     }
+
+    
 }
 
 /*Destock*/
@@ -128,7 +176,8 @@ body {
 
     #first
     {
-        float:left;
+        position: absolute;
+        left:0;
         width:29.33%;
         margin: 3%;
        
@@ -136,24 +185,21 @@ body {
     }
     #second
     {
-        float:left;
+        position: absolute;
+        left: 35.33%;
         width:29.33%;
         margin: 3% 0% 3% 0%;
         
     }
     #third
     {
-        float:left;
+        position: absolute;
+        left: 35.33% + 29.33%;
         width:29.33%;
         margin: 3%;
     }
+    #footer
+    {
+        position: absolute;
+    }
 }
-
-footer {
-  
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #efefef;
-    text-align: center;
-  }

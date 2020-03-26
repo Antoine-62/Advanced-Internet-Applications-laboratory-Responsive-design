@@ -1,71 +1,69 @@
-/*limit sizes of the devices*/ 
-$mobile-width-limit: 600px;
-$desktop-width-limit: 1024px;
+$mobile-width-limit: 600px;//maximum width for mobile device
+$desktop-width-limit: 1024px;//minimum width for destock device
 
-$default-font: 16px;
+$default-font: 16px;//default font size
+$distanceBetweenSection: 3%;//distance between each sections(and the edge of the navigator)
+$widthSectionMobile: 94%;//Section's width for mobile screen
+$widthSectionTablet: 45.5%;//Section's width for Tablet screen
+$widthSectionDestock: 29.33%;//Section's width for Destock screen
+$widthTitleSection: 45.5%;//Width of the section's title
+$paddingTitleS: 2%;//padding of the section's title
+$heightFooterTab:24em;//size of the footer for tablet
+$heightFooterMob:7em;//size of the footer for Mobile
+$heightFooterDes:24em;//size of the footer for Destock
 
-$tablet-width: 100%;
-$desktop-width: 100%;
+html {
+    height:100%;
+}
 
-html {height:100%;}
 body {
     height:100%;
-    margin: 0px;
-    font-size: $default-font;
+    margin: 0px;  //For distance between sections and edge of navigator, we define the margin as 0
+    font-size: $default-font;  //we define the default font size
 }
+
 #container { 
-    position: relative;
-    margin: 0;
+    position: relative;//Because it contains some sections and footer which have absolute position
+    margin: 0;  //For distance between sections and edge of navigator, we define the margin as 0
     min-height: 100%;
  }
- #content { 
-    padding-bottom: 10rem;    /* Footer height */
- }
 
+ footer {
+    
+    position: absolute;  //We want the footer in the bottom, so we need to define the position as absolute
+    bottom: 0%;
+    width: 100%;
+    background-color: #efefef;
+    text-align: center;
+  }
  #titre {
-     font-size: 200%;
- }
-
- nav {
-    ul {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-        background-color: #333;
-      }
-      
-      li {
-        float: left;
-      }
-      
-      li a {
-        display: block;
-        color: white;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-      }
-      
-      /* Change the link color to #111 (black) on hover */
-      li a:hover {
-        background-color: rgb(42, 160, 95);
-      }
-      
- }
+     font-size: 200%;//100% larger than defaukt font size
+ } 
 
  #titreS {
-    font-size: 150%;
+    font-size: 150%;//50% larger than defaukt font size
     margin-top: 0%;
     text-align: center;
-    position: relative;
-    left: 50.5%;
-    padding: 2%;
-    width:45.5%;
+    position: relative;//Because I want to change the position of the title
+    left: 100% - 2*$paddingTitleS - $widthTitleSection;
+    padding: $paddingTitleS;
+    width: $widthTitleSection;
+    
 }
 
+//We set a padding of 2% for text in sections
+#sections{
+    p{
+        padding: 2%;
+    }
+    
+}
+
+//Here, we will use Inheritance to define css properties for sections
 #first
 {
+    border-style: solid;
+    border-width: 1px;
     #titreS {
         background-color: DodgerBlue;
         
@@ -75,63 +73,84 @@ body {
 }
 #second
 {
+    @extend #first;//Inheritance
     #titreS {
         background-color: orange;
     }
-    background-color: #efefef;
-
     
 }
 #third
 {
+    @extend #first;//Inheritance
     #titreS {
         background-color: Violet;
     }
-    background-color: #efefef;
-   /* padding: -2px;
-    border-style: solid;
-    border-width: 0.5px;*/
 }
-footer {
-   
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    background-color: #efefef;
-    text-align: center;
-    margin-top: 3%;
+
+/**************************************************** test mixins **************************************************/
+/*Just to manip the mixins :)*/
+
+  @mixin reset-list {
+    list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333;
+  }
+  
+  @mixin horizontal-list {
+    @include reset-list;
+  
+    li {
+        float: left;
+    }
+    li a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+    }
+
+    li a:hover {
+        background-color: rgb(42, 160, 95);
+      }
+  }
+  
+  nav ul {
+    @include horizontal-list;
   }
 
+/**********************************************************Responsive*****************************************/
 /*Mobile*/
 @media only screen and (max-width: $mobile-width-limit) {
     nav{
         li{
-            float: none;
+            float: none;//to get the menu in column instead in line, I find it better or a mobile screen
         }
     }
     #sections { 
         
         margin: 0%;
+        padding-bottom: $heightFooterMob;    /* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
      }
-    #first
-    {  
-       
-        width:94%;
-        margin: 3%;
-       
 
+    #first
+    {        
+        width:$widthSectionMobile;
+        margin: $distanceBetweenSection;
     }
     #second
     {
         
-        width:94%;
-        margin: 0% 3%;
+        width:$widthSectionMobile;
+        margin: 0% $distanceBetweenSection;
         
     }
     #third
     {
-        width:94%;
-        margin: 3%;
+        width:$widthSectionMobile;
+        margin: $distanceBetweenSection;
     }
 }
 
@@ -140,28 +159,27 @@ footer {
     #sections { 
         
         margin: 0%;
-     }
+        padding-bottom: $heightFooterTab;    /* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
+    }
     #first
     {
-        width:94%;
-        margin: 3%;
-       
-
+        width:$widthSectionMobile;
+        margin: $distanceBetweenSection;
     }
     #second
     {
         position: absolute;
         left: 0;
-        width:45.5%;
-        margin: 0% 3% 3% 3%;
-        
+        width:$widthSectionTablet;
+        margin: 0% $distanceBetweenSection $distanceBetweenSection $distanceBetweenSection;       
     }
     #third
     {
         position: absolute;
-        left: 51.5%;
-        width:45.5%;
-        margin: 0% 3% 3% 0%;
+        left: $widthSectionTablet + 2*$distanceBetweenSection;    
+        width:$widthSectionTablet;
+        margin: 0% $distanceBetweenSection $distanceBetweenSection 0%;
+
     }
 
     
@@ -170,7 +188,7 @@ footer {
 /*Destock*/
 @media only screen and (min-width: $desktop-width-limit) {
     #sections { 
-        
+        padding-bottom: $heightFooterDes;/* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
         margin: 0%;
      }
 
@@ -178,28 +196,37 @@ footer {
     {
         position: absolute;
         left:0;
-        width:29.33%;
-        margin: 3%;
+        width: $widthSectionDestock;
+        margin: $distanceBetweenSection;
        
 
     }
     #second
     {
         position: absolute;
-        left: 35.33%;
-        width:29.33%;
-        margin: 3% 0% 3% 0%;
+        left: $widthSectionDestock + 2*$distanceBetweenSection;
+        width:$widthSectionDestock;
+        margin: $distanceBetweenSection 0% $distanceBetweenSection 0%;
         
     }
     #third
     {
         position: absolute;
-        left: 35.33% + 29.33%;
-        width:29.33%;
-        margin: 3%;
+        left: 2*$distanceBetweenSection + 2 * $widthSectionDestock;
+        width: $widthSectionDestock;
+        margin: $distanceBetweenSection;
     }
-    #footer
-    {
-        position: absolute;
-    }
+}
+
+/*****************************Test Inheritance*******************************************/
+#testInh
+{
+    color : rgb(13, 133, 59);
+    font-style: italic;
+}
+
+#testInh2
+{
+    @extend #testInh;
+    background-color: hotpink;
 }

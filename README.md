@@ -12,7 +12,7 @@ For automatic compilation : sass --watch style.scss:style.css
 ## Utility of Scss (or sass) 
 
 In my opinion, Sass is very usefull because you can define variables. When you want to change the parameters, you only need to change the value of the variable, and no look for all parameters to change in the css file (generally, there are a lot of code lines in the css file, so it takes a lot of time...).  
-Sass proposes others functionalities, in this codes I used a lot the operators, and the nesting. I also used inheritance, and did some manips with the mixins (I did the nav bar with it).
+Sass proposes others functionalities, in this code I used a lot the operators, and the nesting. I also used inheritance, and did some manips with the mixins (I did the nav bar with it).
 
 ## Font Size
 

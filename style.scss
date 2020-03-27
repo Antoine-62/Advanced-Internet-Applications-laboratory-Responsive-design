@@ -8,23 +8,25 @@ $widthSectionTablet: 45.5%;//Section's width for Tablet screen
 $widthSectionDestock: 29.33%;//Section's width for Destock screen
 $widthTitleSection: 45.5%;//Width of the section's title
 $paddingTitleS: 2%;//padding of the section's title
-$heightFooterTab:24em;//size of the footer for tablet
-$heightFooterMob:7em;//size of the footer for Mobile
-$heightFooterDes:24em;//size of the footer for Destock
+$heightFooterTab:24em;//place for footer for tablet
+$heightFooterMob:7em;//place for the footer for Mobile
+$heightFooterDes:24em;//place for the footer for Destock
 
 html {
     height:100%;
 }
 
+body, #container, #sections{
+    margin: 0px;  //For distance between sections and edge of navigator, we define the margin as 0
+}
+
 body {
     height:100%;
-    margin: 0px;  //For distance between sections and edge of navigator, we define the margin as 0
     font-size: $default-font;  //we define the default font size
 }
 
 #container { 
     position: relative;//Because it contains some sections and footer which have absolute position
-    margin: 0;  //For distance between sections and edge of navigator, we define the margin as 0
     min-height: 100%;
  }
 
@@ -55,8 +57,7 @@ body {
 #sections{
     p{
         padding: 2%;
-    }
-    
+    }    
 }
 
 //Here, we will use Inheritance to define css properties for sections
@@ -130,8 +131,6 @@ body {
         }
     }
     #sections { 
-        
-        margin: 0%;
         padding-bottom: $heightFooterMob;    /* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
      }
 
@@ -157,8 +156,6 @@ body {
 /*Tablet*/
 @media only screen and (min-width: $mobile-width-limit + 1) and (max-width: $desktop-width-limit - 1) {
     #sections { 
-        
-        margin: 0%;
         padding-bottom: $heightFooterTab;    /* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
     }
     #first
@@ -180,16 +177,13 @@ body {
         width:$widthSectionTablet;
         margin: 0% $distanceBetweenSection $distanceBetweenSection 0%;
 
-    }
-
-    
+    } 
 }
 
 /*Destock*/
 @media only screen and (min-width: $desktop-width-limit) {
     #sections { 
         padding-bottom: $heightFooterDes;/* we need to keep the place for footer, because when the height of the window narrowed, the position will changed  */
-        margin: 0%;
      }
 
     #first

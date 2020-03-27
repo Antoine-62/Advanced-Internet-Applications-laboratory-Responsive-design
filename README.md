@@ -12,7 +12,7 @@ For automatic compilation : sass --watch style.scss:style.css
 ## Utility of Scss (or sass) 
 
 In my opinion, Sass is very usefull because you can define variables. When you want to change the parameters, you only need to change the value of the variable, and no look for all parameters to change in the css file (generally, there are a lot of code lines in the css file, so it takes a lot of time...).  
-Sass proposes others functionalities, in this codes I used a lot the operators, and the nesting. I also used inhritance, and did some manips with the mixins (I did the nav bar with it).
+Sass proposes others functionalities, in this codes I used a lot the operators, and the nesting. I also used inheritance, and did some manips with the mixins (I did the nav bar with it).
 
 ## Font Size
 
@@ -26,7 +26,7 @@ body {
 }
 ```
 You can notify, we use the property of Sass to use a variable for the default font size.  
-If we want our title 100% larger than our default font size, we just need to add 100%, so the size of our title will be 200% (the reference is default font size defined previously)
+If we want our title 100% larger than our default font size, we just need to add 100%, so the size of our title will be 200% (the reference is default font size previously defined)
 ```
  #titre {
      font-size: 200%;
@@ -53,7 +53,13 @@ body, #container, #sections{
     margin: 0px;  //For distance between sections and edge of navigator, we define the margin as 0
 }
 ```
-
+Because we will position sections as absolute in some cases (for destock and tablet devices), we need to have a reference element defined as relative. This element will be "container" because he contains all others elements :
+```
+#container { 
+    position: relative;//Because it contains some sections and footer which have absolute position
+    min-height: 100%;
+ }
+```
 We set to 3% (it's a random value) the distance between section :
 
 ```
@@ -64,7 +70,12 @@ Secondly, we define 3 screen width for differnts devices :
 * between 601px and 1023 for tablet
 * 1024px or more for destock
 
-For responsive, we will use @media. The following code is to define the screen width tablet :
+```
+$mobile-width-limit: 600px;//maximum width for mobile device
+$desktop-width-limit: 1024px;//minimum width for destock device
+```
+
+For responsive, we will use @media. The following code is to define screens for tablets :
 ```
 /*Tablet*/
 @media only screen and (min-width: $mobile-width-limit + 1) and (max-width: $desktop-width-limit - 1) {
@@ -95,12 +106,15 @@ For responsive, we will use @media. The following code is to define the screen w
 
 ```
 
-In the code above, when we have a screen width for tablet, the section "first" will take all width of the sreen, and we let 6% for the margin (In the code, it's 3% because 3% for margin right + 3% for margin left). Under the section "first", we need to share the screen width for 2 sections : "second" and "third". Because before we defined a distance of 3% between "first" and the edges of the browser, we need to define the distance between sections as 3%. So the width of the articles will be 45.5%, and we set margin-top to 0% for the 2 sections, to keep the distance between the 2 sections and "first" equal to 3%. For the position, we define it as "absolute", and we position the section with the property "left".  
+In the code above, when we have a screen width for tablet, the section "first" will take all width of the sreen, and we let 6% for the margin (In the code, it's 3% because 3% for margin right + 3% for margin left). Under the section "first", we need to share the screen width for 2 sections : "second" and "third". Because before we defined a distance of 3% between "first" and the edges of the browser, we need to define the distance between sections as 3%. So the width of the articles will be 45.5%, and we set margin-top to 0% for the 2 sections, to keep the distance between the 2 sections and "first" equal to 3%.  
+For the position, we define it as "absolute", and we position the section with the property "left".  
+  
+  
 For Mobile and Destock resolution, it's the same principle.  
 
 ## Footer
 
-To have the footer "stick" in the bottom of the page, we define its position as "absolute", and then we position it with the property "bottom" equal to 0. 
+To have the footer "stuck" in the bottom of the page, we define its position as "absolute", and then we position it with the property "bottom" equal to 0. 
 ```
 footer {
    
